@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TodoApp</string>
+    <string name="add_button">Add</string>
+    <string name="add_textfield"></string>
+    <string name="enter_todo_item">Enter Todo Item</string>
+    <string name="toast_hint_empty_list">toast_hint_empty_list</string>
+    
+</resources>
