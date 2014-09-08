@@ -32,8 +32,16 @@ public class TipCalculatorActivity extends Activity {
     
     public void calculateTip(View v) {
     	etTipPert = (EditText) findViewById(R.id.etTipPert);
-    	Double tipPert = Double.parseDouble(etTipPert.getText().toString());
+    	String tipPertString = etTipPert.getText().toString();
+    	
+    	// Guard for tipPert
+    	if (tipPertString.matches("")) {
+		    Toast.makeText(this, "You did not enter a Tip Percentage", Toast.LENGTH_SHORT).show();
+		    return;
+		}
+    	
     	// Calculate tip 
+    	Double tipPert = Double.parseDouble(etTipPert.getText().toString());
     	calculateTipWithPert(tipPert/100);
 	}
     
@@ -41,8 +49,8 @@ public class TipCalculatorActivity extends Activity {
     	// Get Bill amount
     	etBillAmt = (EditText) findViewById(R.id.etBillAmt);
     	String billAmtStr = etBillAmt.getText().toString();
-		System.out.println("billAmt");
-		
+    	
+    	// Guard for Bill amount
 		if (billAmtStr.matches("")) {
 		    Toast.makeText(this, "You did not enter a bill amount", Toast.LENGTH_SHORT).show();
 		    return;
