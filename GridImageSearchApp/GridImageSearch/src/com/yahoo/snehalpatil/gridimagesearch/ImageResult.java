@@ -14,7 +14,7 @@ public class ImageResult {
 	public ImageResult(JSONObject json){
 		try {
 			this.fullURL = json.getString("url");
-			this.thumbURL = json.getString("tburl");
+			this.thumbURL = json.getString("tbUrl");
 			this.title = json.getString("title");
 
 			

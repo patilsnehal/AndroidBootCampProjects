@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.yahoo.snehalpatil.gridimagesearch.adapaters.ImageResultsAdapter;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,21 +23,28 @@ public class SearchActivity extends Activity {
 	private EditText etQuery;
 	private GridView gvResults;
 	private ArrayList<ImageResult> imageResults;
+	private ImageResultsAdapter aImageResults;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         setupViews();
+        
+        // Creates the data source
         imageResults = new ArrayList<ImageResult>();
-      
+        
+        // Attaches data source to the adapter
+        aImageResults = new ImageResultsAdapter(this, imageResults);
+        
+        // Link the adapter to the adapter view i.e grid view
+        gvResults.setAdapter(aImageResults);
     }
     
     private void setupViews() {
 		// TODO Auto-generated method stub
     	etQuery = (EditText) findViewById(R.id.etQuery);
     	gvResults = (GridView) findViewById(R.id.gvResults);
-
 	}
  
     // Fired whenever the button is pressed 
@@ -45,21 +53,20 @@ public class SearchActivity extends Activity {
     	Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
     	  // URL : https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rez=8
         AsyncHttpClient client = new AsyncHttpClient();
-//        String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + query + "&rsz=8";
-        String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rsz=8";
-        System.out.println("searchURL:" + searchURL);
-        
+        String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + query + "&rsz=8";
+         
         client.get(searchURL, new JsonHttpResponseHandler(){
         	@Override
         	public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
         		super.onSuccess(statusCode, headers, response);
-                System.out.println("response:" + response.toString());
         		Log.d("DEBUG", response.toString());
         		JSONArray imageResultJson = null;
         		try {
 					imageResultJson = response.getJSONObject("responseData").getJSONArray("results");
 					imageResults.clear(); // clear existing images from array (in case if its new search)
-					imageResults.addAll(ImageResult.fromJsonArray(imageResultJson));
+					
+					// make changes to the adapter, it does modify underline data for you automatically.
+					aImageResults.addAll(ImageResult.fromJsonArray(imageResultJson));
 					
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -70,8 +77,7 @@ public class SearchActivity extends Activity {
         	
         	@Override
         	public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                System.out.println("statusCode:" + statusCode);
-                System.out.println("errorResponse:" + errorResponse);
+                System.out.println("statusCode:" + statusCode + "\nerrorResponse:" + errorResponse);
         	};
         });
         

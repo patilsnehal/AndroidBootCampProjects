@@ -1,0 +1,9 @@
+package com.yahoo.snehalpatil.gridimagesearch.adapaters;
+
+import android.widget.ArrayAdapter;
+
+import com.yahoo.snehalpatil.gridimagesearch.ImageResult;
+
+public class ImageResultsAdapter extends ArrayAdapter<ImageResult> {
+
+}

@@ -5,5 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="search_promt">Enter Search Query</string>
     <string name="search_button">Search</string>
+    <string name="image_title_label">Image Title</string>
 
 </resources>

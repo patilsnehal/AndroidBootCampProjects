@@ -1,0 +1,17 @@
+package com.yahoo.snehalpatil.gridimagesearch.adapaters;
+
+import java.util.List;
+
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
+import com.yahoo.snehalpatil.gridimagesearch.ImageResult;
+
+public class ImageResultsAdapter extends ArrayAdapter<ImageResult> {
+
+	public ImageResultsAdapter(Context context, int resource, int textViewResourceId, List<ImageResult> images) {
+		super(context, resource, textViewResourceId, objects);
+		// TODO Auto-generated constructor stub
+	}
+
+}
