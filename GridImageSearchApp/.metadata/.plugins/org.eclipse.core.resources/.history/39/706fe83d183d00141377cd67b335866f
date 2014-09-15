@@ -16,10 +16,7 @@ public class FilterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		spImageSize = (Spinner)findViewById(R.id.spImageSize);
-		spImageType = (Spinner)findViewById(R.id.spImageType);
-		spColorFilter = (Spinner)findViewById(R.id.spColorFilter);
-		spSiteFilter = (Spinner)findViewById(R.id.spSiteFilter);
+		
 		
 		setContentView(R.layout.activity_filter);
 		// Pull out the arguments from intent

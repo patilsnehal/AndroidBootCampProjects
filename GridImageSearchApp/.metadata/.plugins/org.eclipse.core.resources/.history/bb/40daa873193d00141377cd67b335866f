@@ -168,6 +168,7 @@ public class SearchActivity extends Activity {
     			this.settings = settings;
     	    	Toast.makeText(this, settings.colorFilter, Toast.LENGTH_SHORT).show();
     	        System.out.println("siteFilter:" + settings.siteFilter + "colorFilter:" + settings.colorFilter + "ImageSize:" + settings.imageSize + "ImageType:" + settings.imageType);
+
     	    	getMoreData();
     		}
     	}

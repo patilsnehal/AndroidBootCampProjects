@@ -24,7 +24,7 @@ public class FilterActivity extends Activity {
 		setContentView(R.layout.activity_filter);
 		// Pull out the arguments from intent
 		settings = (Settings) getIntent().getSerializableExtra("settings");
-//		setValuesInView(settings);
+		setValuesInView(settings);
 	}
 	
 	public void onSave(View v) {
@@ -60,6 +60,12 @@ public class FilterActivity extends Activity {
 	}
 	
 	public void setValuesInView(Settings setting) {
+		
+		setSpinnerToValue(spImageType, setting.imageType);
+		setSpinnerToValue(spImageSize, setting.imageSize);
+		setSpinnerToValue(spColorFilter, setting.colorFilter);
+		setSpinnerToValue(spSiteFilter, setting.siteFilter);
+
 		// Image Type
 		{
 			String imageType = setting.imageType;

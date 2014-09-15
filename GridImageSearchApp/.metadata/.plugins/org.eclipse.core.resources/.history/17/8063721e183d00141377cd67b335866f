@@ -29,11 +29,6 @@ public class FilterActivity extends Activity {
 	
 	public void onSave(View v) {
 		
-		spImageSize = (Spinner)findViewById(R.id.spImageSize);
-		spImageType = (Spinner)findViewById(R.id.spImageType);
-		spColorFilter = (Spinner)findViewById(R.id.spColorFilter);
-		spSiteFilter = (Spinner)findViewById(R.id.spSiteFilter);
-		
 		Intent i = new Intent();
 		// create results
 		settings.imageSize = spImageSize.getSelectedItem().toString();

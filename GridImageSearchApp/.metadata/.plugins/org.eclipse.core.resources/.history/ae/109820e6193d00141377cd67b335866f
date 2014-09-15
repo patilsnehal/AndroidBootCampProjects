@@ -60,6 +60,12 @@ public class FilterActivity extends Activity {
 	}
 	
 	public void setValuesInView(Settings setting) {
+		
+		setSpinnerToValue(spImageType, setting.imageType);
+		setSpinnerToValue(spImageSize, setting.imageSize);
+		setSpinnerToValue(spColorFilter, setting.colorFilter);
+		setSpinnerToValue(spSiteFilter, setting.siteFilter);
+
 		// Image Type
 		{
 			String imageType = setting.imageType;
