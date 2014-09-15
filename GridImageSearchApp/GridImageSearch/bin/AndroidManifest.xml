@@ -33,6 +33,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.yahoo.snehalpatil.gridimagesearch.SearchActivity" />
         </activity>
+        <activity
+            android:name=".FilterActivity"
+            android:label="@string/title_activity_filter" >
+        </activity>
     </application>
 
 </manifest>

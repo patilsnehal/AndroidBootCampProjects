@@ -2,3 +2,14 @@
 1410749681502	Delete element
 1410749802785	Delete element
 1410751031477	Extracts string 'null' into R.string.image_title_label
+1410762387356	Extracts string 'null' into R.string.image_size_label
+1410762400952	Rename field 'editText1'
+1410762473869	Extracts string 'null' into R.string.advancaed_filter_label
+1410762596604	Extracts string 'null' into R.string.color_filter_label
+1410762627695	Rename field 'editText1'
+1410762663043	Extracts string 'null' into R.string.image_type_label
+1410762724747	Rename field 'textView3'
+1410762959444	Extracts string 'null' into R.string.site_filter_label
+1410763038474	Rename field 'textView1'
+1410763063688	Rename field 'editText1'
+1410763164019	Extracts string 'null' into R.string.save_button

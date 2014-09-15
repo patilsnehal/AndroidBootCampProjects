@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.yahoo.snehalpatil.gridimagesearch.ImageDisplayActivity" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+
+    <item
+        android:id="@+id/miPlus"
+        android:icon="@drawable/ic_plus"
+        android:showAsAction="always"
+        android:onClick="onAddItem"
+        android:title="Add Item">
+    </item>
+    
+</menu>
