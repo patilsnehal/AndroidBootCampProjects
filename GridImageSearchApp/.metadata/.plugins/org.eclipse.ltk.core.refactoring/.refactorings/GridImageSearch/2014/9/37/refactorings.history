@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Extracts string &apos;null&apos; into R.string.search_promt" description="Extracts string &apos;null&apos; into R.string.search_promt" flags="6" id="com.android.ide.eclipse.adt.refactoring.extract.string" mode="SELECT_NEW_ID" proj="/GridImageSearch" rplc-all-java="false" rplc-all-xml="false" stamp="1410649578814"/>&#x0A;<refactoring comment="Extracts string &apos;null&apos; into R.string.search_button" description="Extracts string &apos;null&apos; into R.string.search_button" flags="6" id="com.android.ide.eclipse.adt.refactoring.extract.string" mode="SELECT_NEW_ID" proj="/GridImageSearch" rplc-all-java="false" rplc-all-xml="false" stamp="1410649595699"/>
+</session>

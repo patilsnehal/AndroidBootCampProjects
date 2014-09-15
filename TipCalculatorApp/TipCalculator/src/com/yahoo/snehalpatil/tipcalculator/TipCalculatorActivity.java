@@ -48,6 +48,7 @@ public class TipCalculatorActivity extends Activity {
     private void calculateTipWithPert(Double tipPert){
     	// Get Bill amount
     	etBillAmt = (EditText) findViewById(R.id.etBillAmt);
+    	tvTipAmount = (TextView) findViewById(R.id.tvTipAmt);
     	String billAmtStr = etBillAmt.getText().toString();
     	
     	// Guard for Bill amount
@@ -58,11 +59,10 @@ public class TipCalculatorActivity extends Activity {
 		
 		// Calculate tip
     	Double billAmt = Double.parseDouble(billAmtStr);
-    	if (billAmt != 0){
+    	if(billAmt != 0){
     		Double totalTip = billAmt  * tipPert;
         	
         	// set the total tip amount
-        	tvTipAmount = (TextView) findViewById(R.id.tvTipAmt);
         	tvTipAmount.setText(String.format( "%.2f", totalTip));
     	} 
     }
