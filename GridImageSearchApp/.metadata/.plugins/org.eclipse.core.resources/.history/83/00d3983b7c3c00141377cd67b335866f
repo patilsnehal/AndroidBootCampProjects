@@ -3,8 +3,6 @@ package com.yahoo.snehalpatil.gridimagesearch;
 import java.util.ArrayList;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -46,30 +44,20 @@ public class SearchActivity extends Activity {
     	  // URL : https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rez=8
         AsyncHttpClient client = new AsyncHttpClient();
 //        String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + query + "&rsz=8";
-        String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rsz=8";
+        String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rez=8";
         System.out.println("searchURL:" + searchURL);
         
         client.get(searchURL, new JsonHttpResponseHandler(){
         	@Override
         	public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
         		super.onSuccess(statusCode, headers, response);
-                System.out.println("response:" + response.toString());
+                System.out.println("response:" + response);
+
         		Log.d("DEBUG", response.toString());
-        		JSONArray imageResultJson = null;
-        		try {
-					imageResultJson = response.getJSONObject("responseData").getJSONArray("results");
-					imageResults.clear(); // clear existing images from array (in case if its new search)
-					imageResults.addAll(ImageResult.fromJsonArray(imageResultJson));
-					
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-        		Log.i("INFO", imageResults.toString());
-                System.out.println("imageResults:" + imageResults.toString());
         	}
-        	
         	@Override
         	public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+
                 System.out.println("statusCode:" + statusCode);
                 System.out.println("errorResponse:" + errorResponse);
         	};

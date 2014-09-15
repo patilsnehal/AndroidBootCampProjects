@@ -1,0 +1,8 @@
+package com.yahoo.snehalpatil.gridimagesearch;
+
+public class ImageResult {
+	public String fullURL;
+	public String thumbURL;
+	public String title;
+
+}

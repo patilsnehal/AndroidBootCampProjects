@@ -1,0 +1,30 @@
+package com.yahoo.snehalpatil.gridimagesearch;
+
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class ImageResult {
+	public String fullURL;
+	public String thumbURL;
+	public String title;
+
+	// new imageResult (raw item json)
+	public ImageResult(JSONObject json){
+		try {
+			this.fullURL = json.getString("url");
+			this.thumbURL = json.getString("tburl");
+			this.title = json.getString("title");
+
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	//ImageResult.fromJSONArray([....])
+	public static ArrayList<ImageResult> fromJsonArray(JSONArray array){
+		
+	}
+}

@@ -66,6 +66,7 @@ public class SearchActivity extends Activity {
 				}
         		Log.i("INFO", imageResults.toString());
                 System.out.println("imageResults:" + imageResults.toString());
+
         	}
         	
         	@Override

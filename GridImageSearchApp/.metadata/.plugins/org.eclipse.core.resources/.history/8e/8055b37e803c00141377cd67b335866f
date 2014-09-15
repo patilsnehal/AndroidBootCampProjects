@@ -53,7 +53,7 @@ public class SearchActivity extends Activity {
         	@Override
         	public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
         		super.onSuccess(statusCode, headers, response);
-                System.out.println("response:" + response.toString());
+                System.out.println("response:" + response);
         		Log.d("DEBUG", response.toString());
         		JSONArray imageResultJson = null;
         		try {
@@ -64,8 +64,6 @@ public class SearchActivity extends Activity {
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
-        		Log.i("INFO", imageResults.toString());
-                System.out.println("imageResults:" + imageResults.toString());
         	}
         	
         	@Override

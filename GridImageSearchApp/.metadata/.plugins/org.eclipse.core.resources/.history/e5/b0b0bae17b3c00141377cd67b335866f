@@ -1,0 +1,7 @@
+
+public class ImageResult {
+	public String fullURL;
+	public String tbURL;
+	public String fullURL;
+
+}
