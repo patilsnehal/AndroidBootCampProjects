@@ -20,5 +20,6 @@
     <string name="colorFilter_prompt">Color Filter</string>
     <string name="siteFliter_prompt">Site Filter</string>
     <string name="imageType_prompt">Image Type</string>
+    <string name="email_button">Send Email</string>
         
 </resources>

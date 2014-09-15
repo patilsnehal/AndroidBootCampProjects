@@ -24,13 +24,11 @@ public class FilterActivity extends Activity {
 		
 		// Pull out the arguments from intent
 		settings = (Settings) getIntent().getSerializableExtra("settings");
-		
 		setValuesInView(settings);
 	}
 	
 	public void onSave(View v) {
 		 
-		
 		Intent i = new Intent();
 		// create results
 		settings.imageSize = spImageSize.getSelectedItem().toString();

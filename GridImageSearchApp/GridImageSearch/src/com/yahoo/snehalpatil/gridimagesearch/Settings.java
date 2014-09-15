@@ -8,5 +8,4 @@ public class Settings implements Serializable{
 	public String colorFilter;
 	public String imageType;
 	public String siteFilter;
-
 }

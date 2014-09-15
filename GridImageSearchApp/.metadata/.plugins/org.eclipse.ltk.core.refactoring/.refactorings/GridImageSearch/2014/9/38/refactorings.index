@@ -19,3 +19,4 @@
 1410803516759	Rename field 'spinner1'
 1410803916804	Rename field 'spinner1'
 1410809283360	Rename resource 'ImageSize_array.xml'
+1410819803914	Extracts string 'null' into R.string.email_button

@@ -1,0 +1,70 @@
+package com.yahoo.snehalpatil.gridimagesearch;
+
+import com.squareup.picasso.Picasso;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageView;
+
+public class ImageDisplayActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_image_display);
+		// remove action bar on the image display activity
+		getActionBar().hide();
+		// pull out the url from the content 
+		ImageResult result = (ImageResult) getIntent().getSerializableExtra("result");
+		// find the image view
+		ImageView ivImageResult = (ImageView) findViewById(R.id.ivImageResult);
+		// load the image url into the imageview using picasso
+		Picasso.with(this).load(result.fullURL).into(ivImageResult);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.image_display, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	public void onSendEmail(View v) {
+	      Log.i("Send email", "");
+
+	      String[] TO = {"amrood.admin@gmail.com"};
+	      String[] CC = {"mcmohd@gmail.com"};
+	      Intent emailIntent = new Intent(Intent.ACTION_SEND);
+	      emailIntent.setData(Uri.parse("mailto:"));
+	      emailIntent.setType("text/plain");
+
+
+	      emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+	      emailIntent.putExtra(Intent.EXTRA_CC, CC);
+	      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+	      emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+	      try {
+	         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+	         finish();
+	         Log.i("Finished sending email...", "");
+	      } catch (android.content.ActivityNotFoundException ex) {
+	         Toast.makeText(MainActivity.this, 
+	         "There is no email client installed.", Toast.LENGTH_SHORT).show();
+	      }
+	   }
+}

@@ -32,12 +32,13 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090010;
+        public static final int action_settings=0x7f090011;
         public static final int btnSave=0x7f090000;
-        public static final int btnSearch=0x7f09000c;
-        public static final int etQuery=0x7f09000b;
-        public static final int gvResults=0x7f09000d;
-        public static final int ivImage=0x7f09000e;
+        public static final int btnSearch=0x7f09000d;
+        public static final int button1=0x7f09000b;
+        public static final int etQuery=0x7f09000c;
+        public static final int gvResults=0x7f09000e;
+        public static final int ivImage=0x7f09000f;
         public static final int ivImageResult=0x7f09000a;
         public static final int spColorFilter=0x7f090003;
         public static final int spImageSize=0x7f090004;
@@ -48,7 +49,7 @@ public final class R {
         public static final int tvImageSize=0x7f090002;
         public static final int tvImageType=0x7f090006;
         public static final int tvSiteFilter=0x7f090008;
-        public static final int tvTitle=0x7f09000f;
+        public static final int tvTitle=0x7f090010;
     }
     public static final class layout {
         public static final int activity_filter=0x7f030000;
@@ -66,6 +67,7 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int colorFilter_prompt=0x7f06000f;
         public static final int color_filter_label=0x7f06000a;
+        public static final int email_button=0x7f060012;
         public static final int hello_world=0x7f060001;
         public static final int imageSize_prompt=0x7f06000e;
         public static final int imageType_prompt=0x7f060011;

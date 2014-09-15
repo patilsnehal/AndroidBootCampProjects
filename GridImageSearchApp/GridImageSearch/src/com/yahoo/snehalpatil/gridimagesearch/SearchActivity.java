@@ -8,7 +8,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -71,7 +74,6 @@ public class SearchActivity extends Activity {
     
 
     private void setupViews() {
-		// TODO Auto-generated method stub
     	etQuery = (EditText) findViewById(R.id.etQuery);
     	gvResults = (GridView) findViewById(R.id.gvResults);
     	gvResults.setOnItemClickListener(new OnItemClickListener() {
@@ -97,19 +99,30 @@ public class SearchActivity extends Activity {
         settings.colorFilter = "red";
         settings.imageType = "photo";
         settings.siteFilter = "google.com";
+ 
     }
  
     // Fired whenever the button is pressed 
     public void onImageSearch(View v){
-    	// clear existing images from array (in case if its new search)
-		imageResults.clear(); 
-		pageOffset = 0;
-		
-  	  // URL : https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rez=8
-    	getMoreData();
+    	
+    	String query = etQuery.getText().toString();
+		if (query== null || (query.equalsIgnoreCase("") == true)) {
+	    	Toast.makeText(this, "Please enter search query", Toast.LENGTH_SHORT).show();
+		}
+		else {
+			// clear existing images from array (in case if its new search)
+			imageResults.clear(); 
+			pageOffset = 0;
+			// get data using network request
+			getMoreData();
+		}
     }
 
 	private void getMoreData() {
+		if (!isNetworkAvailable()){
+	    	Toast.makeText(this, "No Internet Access", Toast.LENGTH_SHORT).show();
+	    	return;
+		}
 		// get querystring
     	String query = etQuery.getText().toString();
     	
@@ -142,6 +155,12 @@ public class SearchActivity extends Activity {
         	};
         });
     }
+	private Boolean isNetworkAvailable() {
+	    ConnectivityManager connectivityManager 
+	          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+	}
 	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -166,8 +185,9 @@ public class SearchActivity extends Activity {
     		if(resultCode == RESULT_OK) {
     			Settings settings = (Settings) data.getSerializableExtra("settings");
     			this.settings = settings;
-    	    	Toast.makeText(this, settings.colorFilter, Toast.LENGTH_SHORT).show();
-    	        System.out.println("siteFilter:" + settings.siteFilter + "colorFilter:" + settings.colorFilter + "ImageSize:" + settings.imageSize + "ImageType:" + settings.imageType);
+    	        System.out.println("siteFilter:" + settings.siteFilter + " colorFilter:" + settings.colorFilter + " ImageSize:" + settings.imageSize + " ImageType:" + settings.imageType);
+    	    	imageResults.clear(); 
+    			pageOffset = 0;
     	    	getMoreData();
     		}
     	}
