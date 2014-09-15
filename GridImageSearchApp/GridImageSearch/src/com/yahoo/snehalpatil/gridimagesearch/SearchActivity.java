@@ -7,17 +7,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.yahoo.snehalpatil.gridimagesearch.adapaters.ImageResultsAdapter;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.yahoo.snehalpatil.gridimagesearch.adapaters.ImageResultsAdapter;
 
 public class SearchActivity extends Activity {
 	private EditText etQuery;
@@ -45,6 +48,21 @@ public class SearchActivity extends Activity {
 		// TODO Auto-generated method stub
     	etQuery = (EditText) findViewById(R.id.etQuery);
     	gvResults = (GridView) findViewById(R.id.gvResults);
+    	gvResults.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// launch image display activity
+				// Create an intend
+				Intent i = new Intent(SearchActivity.this, ImageDisplayActivity.class);
+				// get the image result to display
+				ImageResult result = imageResults.get(position);
+				// pass image result into the intent
+				i.putExtra("result", result);
+				// launch the new activity
+				startActivity(i);
+			}
+		});
 	}
  
     // Fired whenever the button is pressed 

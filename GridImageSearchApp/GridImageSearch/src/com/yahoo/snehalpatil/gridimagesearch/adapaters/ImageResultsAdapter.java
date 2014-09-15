@@ -35,7 +35,9 @@ public class ImageResultsAdapter extends ArrayAdapter<ImageResult> {
 	    // clear out image from last time
 	    ivImage.setImageResource(0);
 	    tvTitle.setText(Html.fromHtml(imageInfo.title));
-	    
+	    System.out.println("imageInfo.title" + imageInfo.title);
+	    System.out.println("imageInfo.thumbURL" + imageInfo.thumbURL);
+
 	    //remotely download image data in the background (with Picaso)
 	    Picasso.with(getContext()).load(imageInfo.thumbURL).into(ivImage);
 	    
