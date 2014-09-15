@@ -134,7 +134,6 @@ public class SearchActivity extends Activity {
 					e.printStackTrace();
 				}
         		Log.i("INFO", imageResults.toString());
-                System.out.println("imageResults:" + imageResults.toString());
         	}
         	
         	@Override
@@ -167,7 +166,7 @@ public class SearchActivity extends Activity {
     		if(resultCode == RESULT_OK) {
     			Settings settings = (Settings) data.getSerializableExtra("settings");
     			this.settings = settings;
-    	    	Toast.makeText(this, settings.siteFilter, Toast.LENGTH_SHORT).show();
+    	    	Toast.makeText(this, settings.colorFilter, Toast.LENGTH_SHORT).show();
     	    	getMoreData();
     		}
     	}

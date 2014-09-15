@@ -16,4 +16,9 @@
     <string name="site_filter_label">Site Filter</string>
     <string name="save_button">Save</string>
 
+    <string name="imageSize_prompt">Image Size</string>
+    <string name="colorFilter_prompt">Color Filter</string>
+    <string name="siteFliter_prompt">Site Filter</string>
+    <string name="imageType_prompt">Image Type</string>
+        
 </resources>
