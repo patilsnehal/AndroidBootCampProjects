@@ -15,23 +15,20 @@ public class FilterActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		setContentView(R.layout.activity_filter);
+		// Pull out the arguments from intent
+		settings = (Settings) getIntent().getSerializableExtra("settings");
+	}
+	
+	public void onSave(View v){
+		// serialize from data
 		spImageSize = (Spinner)findViewById(R.id.spImageSize);
 		spImageType = (Spinner)findViewById(R.id.spImageType);
 		spColorFilter = (Spinner)findViewById(R.id.spColorFilter);
 		spSiteFilter = (Spinner)findViewById(R.id.spSiteFilter);
 		
-		setContentView(R.layout.activity_filter);
-		// Pull out the arguments from intent
-		settings = (Settings) getIntent().getSerializableExtra("settings");
-		setValuesInView(settings);
-	}
-	
-	public void onSave(View v){
-	
-
-		Intent i = new Intent();
 		// create results
+		Intent i = new Intent();
 		settings.imageSize = spImageSize.getSelectedItem().toString();
 		settings.imageType = spImageType.getSelectedItem().toString();
 		settings.colorFilter = spColorFilter.getSelectedItem().toString();
@@ -66,28 +63,10 @@ public class FilterActivity extends Activity {
 		}
 		// Image Size
 		{
-			String imageSize = setting.imageSize;
-			String imageSizeSpValue = spImageSize.getSelectedItem().toString();
-			if ((imageSizeSpValue.equalsIgnoreCase(imageSize) == false) && (imageSize != "")) {
-				setSpinnerToValue(spImageSize, imageSize);
+			String imageSizeStr = setting.imageSize;
+			String imageSizeSpValue = spImageSizeSpinner.getSelectedItem().toString();
+			if ((imageSizeSpValue.equalsIgnoreCase(imageSizeStr) == false) && (imageSizeStr != "")) {
+				setSpinnerToValue(spImageSizeSpinner, imageSizeStr);
 			}
 		}
-		
-		// color filter
-		{
-			String colorFilter = setting.colorFilter;
-			String colorFilterSpValue = spColorFilter.getSelectedItem().toString();
-			if ((colorFilterSpValue.equalsIgnoreCase(colorFilter) == false) && (colorFilter != "")) {
-				setSpinnerToValue(spColorFilter, colorFilter);
-			}
-		}
-		// site filter
-		{
-			String siteFilter = setting.siteFilter;
-			String siteFilterSpValue = spSiteFilter.getSelectedItem().toString();
-			if ((siteFilterSpValue.equalsIgnoreCase(siteFilter) == false) && (siteFilter != "")) {
-				setSpinnerToValue(spSiteFilter, siteFilter);
-			}
-		}
-	}
 }
