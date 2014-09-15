@@ -171,8 +171,8 @@ public class SearchActivity extends Activity {
     private String buildURL(String query){
     	// Build URL using settings parameter
         String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&q=" + query + "&as_sitesearch=" + settings.siteFilter + "&imgcolor="
-        + settings.colorFilter + "&imgsz=" + settings.imageSize + "&imgtype=" + settings.imageType + "&start=" + pageOffset;
-        System.out.println("searchURL:" + searchURL);
+        + settings.colorFilter + "&imgsz=" + settings.imageSize + "&imgtype=" + settings.imageType;
+        System.out.println(searchURL);
         return searchURL;
     }
 }

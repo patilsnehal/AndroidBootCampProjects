@@ -31,14 +31,14 @@ public class SearchActivity extends Activity {
 	private ArrayList<ImageResult> imageResults;
 	private ImageResultsAdapter aImageResults;
 	private Settings settings;
-	private int pageOffset;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         setupViews();
         setUpSettings();
-        pageOffset = 0;
+        
         // Creates the data source
         imageResults = new ArrayList<ImageResult>();
         
@@ -65,8 +65,6 @@ public class SearchActivity extends Activity {
       // This method probably sends out a network request and appends new data items to your adapter. 
       // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
       // Deserialize API response and then construct new objects to append to the adapter
-    	pageOffset = pageOffset + 8;
-    	getMoreData();
     }
     
 
@@ -171,8 +169,8 @@ public class SearchActivity extends Activity {
     private String buildURL(String query){
     	// Build URL using settings parameter
         String searchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&q=" + query + "&as_sitesearch=" + settings.siteFilter + "&imgcolor="
-        + settings.colorFilter + "&imgsz=" + settings.imageSize + "&imgtype=" + settings.imageType + "&start=" + pageOffset;
-        System.out.println("searchURL:" + searchURL);
+        + settings.colorFilter + "&imgsz=" + settings.imageSize + "&imgtype=" + settings.imageType;
+        System.out.println(searchURL);
         return searchURL;
     }
 }
