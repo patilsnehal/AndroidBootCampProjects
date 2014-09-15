@@ -112,11 +112,9 @@ public class SearchActivity extends Activity {
 	private void getMoreData() {
 		// get querystring
     	String query = etQuery.getText().toString();
-    	
     	// build URL
         String url = buildURL(query); 
         
-        // Build HTTP request
         AsyncHttpClient client = new AsyncHttpClient();        
         client.get(url, new JsonHttpResponseHandler() {
         	@Override

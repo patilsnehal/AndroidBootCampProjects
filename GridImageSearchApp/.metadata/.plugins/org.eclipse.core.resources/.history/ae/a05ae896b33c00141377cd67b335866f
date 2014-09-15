@@ -116,7 +116,6 @@ public class SearchActivity extends Activity {
     	// build URL
         String url = buildURL(query); 
         
-        // Build HTTP request
         AsyncHttpClient client = new AsyncHttpClient();        
         client.get(url, new JsonHttpResponseHandler() {
         	@Override

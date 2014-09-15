@@ -65,6 +65,7 @@ public class SearchActivity extends Activity {
       // This method probably sends out a network request and appends new data items to your adapter. 
       // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
       // Deserialize API response and then construct new objects to append to the adapter
+    	System.out.println("pagination called");
     	pageOffset = pageOffset + 8;
     	getMoreData();
     }
@@ -101,22 +102,18 @@ public class SearchActivity extends Activity {
  
     // Fired whenever the button is pressed 
     public void onImageSearch(View v){
-    	// clear existing images from array (in case if its new search)
-		imageResults.clear(); 
-		pageOffset = 0;
-		
+		imageResults.clear(); // clear existing images from array (in case if its new search)
+
   	  // URL : https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android&rez=8
     	getMoreData();
     }
 
 	private void getMoreData() {
-		// get querystring
+
     	String query = etQuery.getText().toString();
-    	
     	// build URL
         String url = buildURL(query); 
         
-        // Build HTTP request
         AsyncHttpClient client = new AsyncHttpClient();        
         client.get(url, new JsonHttpResponseHandler() {
         	@Override
