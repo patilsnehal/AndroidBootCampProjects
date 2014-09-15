@@ -24,7 +24,6 @@ public class FilterActivity extends Activity {
 		
 		// Pull out the arguments from intent
 		settings = (Settings) getIntent().getSerializableExtra("settings");
-		
 		setValuesInView(settings);
 	}
 	

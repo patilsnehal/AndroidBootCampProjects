@@ -93,10 +93,7 @@ public class SearchActivity extends Activity {
     
     private void setUpSettings(){
     	settings = new Settings();
-        settings.imageSize = "small";
-        settings.colorFilter = "red";
-        settings.imageType = "photo";
-        settings.siteFilter = "google.com";
+/
     }
  
     // Fired whenever the button is pressed 
