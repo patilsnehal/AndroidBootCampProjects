@@ -2,13 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.yahoo.snehalpatil.gridimagesearch.ImageDisplayActivity" >
 
-<!--     <item
+    <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_action_settings"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:onClick="onSettingsClicked"
-        android:title="@string/action_settings"/> -->
-
-    
+        android:title="@string/action_settings"/>
 </menu>
