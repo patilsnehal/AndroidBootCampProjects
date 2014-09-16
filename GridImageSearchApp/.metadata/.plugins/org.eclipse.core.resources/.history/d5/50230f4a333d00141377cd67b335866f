@@ -66,14 +66,13 @@ public class ImageDisplayActivity extends Activity {
 	      emailIntent.putExtra(Intent.EXTRA_SUBJECT,result.title);
 	      emailIntent.putExtra(Intent.EXTRA_TEXT, "This is really great image. Please have a look. Image");
 	      emailIntent .putExtra(Intent.EXTRA_STREAM, Uri.parse(result.fullURL));
+	      
+	      emailIntent.setType("image/jpeg");
 
-//	      emailIntent.setType("image/jpeg");
-//	      File downloadedPic =  new File(
-//	          Environment.getExternalStoragePublicDirectory(
-//	          Environment.DIRECTORY_DOWNLOADS), 
-//	          result.fullURL);
-//	      
-
+	      File downloadedPic =  new File(
+	          Environment.getExternalStoragePublicDirectory(
+	          Environment.DIRECTORY_DOWNLOADS), 
+	          "q.jpeg");
 	      
 	      try {
 	         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
