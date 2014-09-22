@@ -29,7 +29,7 @@ public class ComposeActivity extends Activity {
 		
 		Intent i = new Intent();
 		// create results
-		i.putExtra("composedTweet", etCompose.getText().toString());
+		//i.putExtra("settings", settings);
 
 		// submit my result to parent activity
 		setResult(RESULT_OK,i);

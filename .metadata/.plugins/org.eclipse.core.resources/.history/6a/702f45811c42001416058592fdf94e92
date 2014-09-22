@@ -101,7 +101,7 @@ public class TimelineActivity extends Activity {
     				@Override
     				public void onSuccess(JSONArray json) {
     					System.out.println("tweet submitted:" + json.toString());
-    					// create new tweet and user object and add it to to array list adapter
+    					// create new tweet and user object and add it to to arraylist adapter
     					Tweet newtweet = new Tweet();
     					populateTimeline();
     				}
