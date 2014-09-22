@@ -51,7 +51,7 @@ public class ComposeActivity extends Activity {
 				Log.d("debug", s.toString());
 			}
 		});
-	finish();
+			finish();
 
 	}
 }

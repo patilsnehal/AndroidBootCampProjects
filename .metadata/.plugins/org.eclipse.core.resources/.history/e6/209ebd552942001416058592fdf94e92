@@ -42,6 +42,9 @@ public class ComposeActivity extends Activity {
 				// submit my result to parent activity
 
 				setResult(RESULT_OK, i);
+				finish();
+
+
 			}
 
 			@Override
@@ -51,7 +54,6 @@ public class ComposeActivity extends Activity {
 				Log.d("debug", s.toString());
 			}
 		});
-	finish();
 
 	}
 }
