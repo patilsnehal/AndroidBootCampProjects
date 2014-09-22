@@ -1,0 +1,7 @@
+package com.example.basicimagedownloading;
+
+public class ImageLoader {
+	public static void load(String url,ImageView imageView){
+		
+	}
+}

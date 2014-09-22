@@ -1,0 +1,21 @@
+package com.example.basicimagedownloading;
+
+import android.os.AsyncTask;
+import android.widget.ImageView;
+
+public class ImageLoader {
+	public static void load(String url,ImageView imageView){
+		// cue magic networking
+		
+	}
+	
+	private class ImageAsyncLoader extends AsyncTask<String, Void, Bitcamp>{
+
+		@Override
+		protected Bitcamp doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+}

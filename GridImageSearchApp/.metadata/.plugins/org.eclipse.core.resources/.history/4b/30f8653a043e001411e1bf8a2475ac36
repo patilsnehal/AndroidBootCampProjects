@@ -1,0 +1,34 @@
+package com.example.basicimagedownloading;
+
+import java.io.InputStream;
+import java.net.URL;
+
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.widget.ImageView;
+
+public class ImageLoader {
+	public static void load(String url,ImageView imageView){
+		// cue magic networking
+		new ImageAsyncLoader(imageView).execute(url);
+	}
+	
+	private static class ImageAsyncLoader extends AsyncTask<String, Void, Bitmap>{
+		private ImageView imageView;
+		public ImageAsyncLoader(ImageView imageView){
+			this.imageView = imageView;
+		}
+		@Override
+		protected Bitmap doInBackground(String... addresses) {
+			// Convert string to URL
+						URL url = getUrlFromString(addresses[0]);
+						// Get input stream
+						InputStream in = getInputStream(url);
+						// Decode bitmap
+						Bitmap bitmap = decodeBitmap(in);
+						// Return bitmap result
+						return bitmap;
+		}
+		
+	}
+}

@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.TimelineActivity"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.RequestParams"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.TwitterApplication"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.AsyncHttpResponseHandler"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.JsonHttpResponseHandler"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="android.R.color"/>
+<fullyQualifiedTypeName name="com.nostra13.universalimageloader.core.ImageLoader"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.TweetArrayAdapter"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.menu"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.R.id"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+</qualifiedTypeNameHistroy>

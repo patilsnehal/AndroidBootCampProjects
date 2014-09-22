@@ -1,0 +1,10 @@
+package com.example.basicimagedownloading;
+
+import android.widget.ImageView;
+
+public class ImageLoader {
+	public static void load(String url,ImageView imageView){
+		// cue magic netoworking
+		
+	}
+}

@@ -1,0 +1,23 @@
+package com.codepath.apps.basictwitter.models;
+
+import org.json.JSONObject;
+
+public class User {
+	private String name;
+	private long uid;
+	private String screenName;
+	private String imageProfileUrl;
+	public static User fromJson(JSONObject jsonObject) {
+		User user = new User;
+		try {
+			user.name = jsonObject.getString("name");
+			user.uid = jsonObject.getString("id");
+			user.screenName = jsonObject.getString("screen_name");
+			user.name = jsonObject.getString("profile_image_url");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

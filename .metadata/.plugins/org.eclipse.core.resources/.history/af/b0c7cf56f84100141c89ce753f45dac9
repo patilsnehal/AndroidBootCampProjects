@@ -1,0 +1,11 @@
+package com.codepath.apps.basictwitter;
+import android.widget.ArrayAdapter;
+
+import com.codepath.apps.basictwitter.models.Tweet;
+
+
+public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
+	public TweetArrayAdapter(Context context, List<Tweet> objects){
+		super(context, 0 , tweets);
+	}
+}

@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<list key="installedFeatures">
 		<item value="com.android.ide.eclipse.adt.package.feature:23.0.2.1259578"/>
+		<item value="com.wireframesketcher:4.3.2"/>
 		<item value="org.eclipse.cdt.gdb:7.0.0.201302132326"/>
 		<item value="org.eclipse.cdt:8.1.2.201302132326"/>
 		<item value="org.eclipse.egit.import:2.2.0.201212191850-r"/>
@@ -23,5 +24,16 @@
 		<item value="455" key="DIALOG_X_ORIGIN"/>
 		<item value="529" key="DIALOG_HEIGHT"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="CleanDialogSettings">
+		<item value="484" key="DIALOG_WIDTH"/>
+		<item value="true" key="BUILD_NOW"/>
+		<item value="true" key="BUILD_ALL"/>
+		<item value="225" key="DIALOG_Y_ORIGIN"/>
+		<item value="423" key="DIALOG_HEIGHT"/>
+		<item value="480" key="DIALOG_X_ORIGIN"/>
+		<item value="true" key="TOGGLE_SELECTED"/>
 	</section>
 </section>

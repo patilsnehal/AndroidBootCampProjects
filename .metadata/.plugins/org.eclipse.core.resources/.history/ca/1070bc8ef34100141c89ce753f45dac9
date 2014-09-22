@@ -1,0 +1,22 @@
+package com.codepath.apps.basictwitter.models;
+
+import org.json.JSONObject;
+
+public class Tweet {
+	private String uid;
+	private String body;
+	private String createAt;
+	private User user;
+	
+	public static Tweet fromJson(JSONObject jsonObject) {
+		return this.name;
+	}
+	
+	public String getPhone() {
+		return this.phone;
+	}
+	
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+}

@@ -1,0 +1,12 @@
+1411265755145	Rename package 'com.codepath.apps.restclienttemplate'
+1411265998707	Rename type 'RestClient'
+1411266016850	Rename type 'RestClientApp'
+1411335573561	Rename field 'listView1'
+1411347214375	Move compilation units
+1411349470350	Move compilation unit
+1411350898063	Extracts string 'null' into R.string.foo_label
+1411359350980	Rename resource 'photos.xml'
+1411359550693	Delete element
+1411359555839	Delete element
+1411359717458	Move file
+1411362469538	Extracts string 'null' into R.string.compose_button

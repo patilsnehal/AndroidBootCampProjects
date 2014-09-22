@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.view.View"/>
-<fullyQualifiedTypeName name="android.R"/>
-<fullyQualifiedTypeName name="android.R.id"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.AsyncHttpClient"/>
+<fullyQualifiedTypeName name="com.loopj.android.http.JsonHttpResponseHandler"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.json.JSONArray"/>
+<fullyQualifiedTypeName name="android.R.id"/>
+<fullyQualifiedTypeName name="android.view.LayoutInflater"/>
+<fullyQualifiedTypeName name="com.yahoo.snehalpatil.gridimagesearch.R"/>
+<fullyQualifiedTypeName name="android.webkit.WebView.FindListener"/>
+<fullyQualifiedTypeName name="android.text.Html"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
+<fullyQualifiedTypeName name="com.yahoo.snehalpatil.gridimagesearch.adapaters.ImageResultsAdapter"/>
+<fullyQualifiedTypeName name="com.yahoo.snehalpatil.gridimagesearch.ImageDisplayActivity"/>
+<fullyQualifiedTypeName name="com.yahoo.snehalpatil.gridimagesearch.ImageResult"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="com.yahoo.snehalpatil.gridimagesearch.R.id"/>
+<fullyQualifiedTypeName name="com.squareup.picasso.Picasso"/>
+<fullyQualifiedTypeName name="android.widget.AbsListView.OnScrollListener"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="android.widget.Spinner"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="android.widget.SpinnerAdapter"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
 </qualifiedTypeNameHistroy>

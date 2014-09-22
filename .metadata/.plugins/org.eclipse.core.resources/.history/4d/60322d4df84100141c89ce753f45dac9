@@ -1,0 +1,7 @@
+package com.codepath.apps.basictwitter;
+import android.widget.ArrayAdapter;
+
+
+public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
+
+}
