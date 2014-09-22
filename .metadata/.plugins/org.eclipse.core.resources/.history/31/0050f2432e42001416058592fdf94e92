@@ -33,7 +33,7 @@ public class ComposeActivity extends Activity {
 			public void onSuccess(JSONObject json) {
 				
 				System.out.println("tweet submitted:" + json.toString());
-				Intent i = new Intent();
+				  final Intent i = new Intent();
 
 				// create new Tweet and user object and add it to to array list adapter
 				t = Tweet.fromJson(json);

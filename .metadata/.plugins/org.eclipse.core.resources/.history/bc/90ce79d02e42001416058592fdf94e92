@@ -5,8 +5,6 @@ import java.io.Serializable;
 import org.json.JSONObject;
 
 public class User implements Serializable {
-
-	private static final long serialVersionUID = 3107933459929701956L;
 	private String name;
 	private String uid;
 	private String screenName;
