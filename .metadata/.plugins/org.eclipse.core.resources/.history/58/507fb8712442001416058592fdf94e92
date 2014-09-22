@@ -41,7 +41,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		// Populate the data into the template view using the data object
 		ivProfileImage.setImageResource(android.R.color.transparent);
 		ImageLoader imageLoader = ImageLoader.getInstance();
-		if (tweet.getUser().getProfileImageUrl() != null)
+		if (tweet.getUser().getProfileImageUrl(),ivProfileImage)
 		{
 			imageLoader.displayImage(tweet.getUser().getProfileImageUrl(),
 					ivProfileImage);

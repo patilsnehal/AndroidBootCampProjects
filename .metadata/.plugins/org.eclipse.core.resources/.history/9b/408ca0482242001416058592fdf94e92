@@ -8,10 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Tweet implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5758707162546258507L;
 	private String uid;
 	private String body;
 	private String createAt;

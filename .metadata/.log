@@ -4870,3 +4870,9 @@ org.eclipse.core.internal.resources.ResourceException: A resource already exists
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 !SUBENTRY 1 org.eclipse.core.resources 4 272 2014-09-21 22:45:39.817
 !MESSAGE A resource already exists on disk '/Users/snehalpatil/Documents/workspace/UsersListApp/.settings'.
+
+!ENTRY org.eclipse.core.resources 4 567 2014-09-21 23:31:19.014
+!MESSAGE The project description file (.project) for 'BasicImageDownloading' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.core.resources 4 567 2014-09-21 23:31:24.152
+!MESSAGE The project description file (.project) for 'BasicImageDownloading' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.

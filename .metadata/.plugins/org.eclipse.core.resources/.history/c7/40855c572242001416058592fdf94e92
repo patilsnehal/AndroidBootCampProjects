@@ -28,7 +28,7 @@ public class ComposeActivity extends Activity {
 		etCompose = (EditText) findViewById(R.id.etCompose);
 		String composedTweet = etCompose.getText().toString();
 		// Create Intent
-		  final Intent i = new Intent(this, Tweet.class);
+		  Intent i = new Intent(this, Tweet.class);
 		  client.postHomeTimeline(composedTweet, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONObject json) {

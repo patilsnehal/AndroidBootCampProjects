@@ -97,7 +97,7 @@ public class TimelineActivity extends Activity {
     		if(resultCode == RESULT_OK) {
     			// insert Tweet object to the Timeline
     			Tweet tweet = (Tweet) data.getSerializableExtra("tweet");
-    			aTweets.insert(tweet, 0);
+    			aTweets.add(tweet);
     		}
     	}
     }
