@@ -93,26 +93,11 @@ public class TimelineActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	super.onActivityResult(requestCode, resultCode, data);
-        String composedTweet = data.getExtras().getString("composedTweet");
-        
     	if(requestCode == 5) {
     		if(resultCode == RESULT_OK) {
-    			client.postHomeTimeline(composedTweet, new JsonHttpResponseHandler() {
-    				@Override
-    				public void onSuccess(JSONArray json) {
-    					System.out.println("tweet submitted:" + json.toString());
-    					// create new tweet and user object and add it to to array list adapter
-    					Tweet newtweet = new Tweet();
-    					populateTimeline();
-    				}
-
-    				@Override
-    				public void onFailure(Throwable e, String s) {
-    					System.out.println("tweet failed");
-    					Log.d("debug", e.toString());
-    					Log.d("debug", s.toString());
-    				}
-    			});
+    			// insert Tweet object to the Timeline
+    			Tweet tweet = (Tweet) data.getSerializableExtra("tweet");
+    			aTweets.add(tweet);
     		}
     	}
     }

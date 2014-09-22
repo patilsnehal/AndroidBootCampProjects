@@ -1,0 +1,60 @@
+package com.codepath.apps.basictwitter;
+
+import org.json.JSONArray;
+
+import com.codepath.apps.basictwitter.models.Tweet;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+
+public class ComposeActivity extends Activity {
+	private EditText etCompose;
+	private TwitterClient client;
+	private Tweet tweet;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_compose);
+		client = TwitterApplication.getRestClient();
+
+		// Pull out the arguments from intent
+//		settings = (Settings) getIntent().getSerializableExtra("settings");
+	}
+	
+	public void onComposeClicked(View v) {
+		etCompose = (EditText) findViewById(R.id.etCompose);
+		String composedTweet = etCompose.getText().toString();
+
+		client.postHomeTimeline(composedTweet, new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(JSONArray json) {
+				System.out.println("tweet submitted:" + json.toString());
+				// Create Intent
+				Intent i = new Intent();
+				// create new tweet and user object and add it to to array list adapter
+				
+				i.putExtra("Tweet",tweet.fromJson(json));
+
+			}
+
+			@Override
+			public void onFailure(Throwable e, String s) {
+				System.out.println("tweet failed");
+				Log.d("debug", e.toString());
+				Log.d("debug", s.toString());
+			}
+		});
+		
+		// submit my result to parent activity
+		setResult(RESULT_OK,i);
+		finish();
+		}
+}
+  
+
