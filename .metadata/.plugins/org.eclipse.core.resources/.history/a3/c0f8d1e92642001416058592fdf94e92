@@ -36,7 +36,7 @@ public class ComposeActivity extends Activity {
 
 				// create new Tweet and user object and add it to to array list
 				// adapter
-				t = Tweet.fromJson(json);
+s				t = Tweet.fromJson(json);
 				System.out.print("ttttttt" + json.toString());
 				i.putExtra("tweet", t);
 			}
