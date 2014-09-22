@@ -85,7 +85,7 @@ public class TimelineActivity extends Activity {
 		// construct intent
     	Intent i = new Intent(this, ComposeActivity.class);
     	// Pass arguments
-    	//i.putExtra("settings", settings);
+//    	i.putExtra("settings", settings);
     	//Execute Intent StartACtivutyForResult
     	startActivityForResult(i, 5);
 	}
@@ -116,4 +116,6 @@ public class TimelineActivity extends Activity {
     		}
     	}
     }
+
+
 }
