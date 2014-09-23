@@ -9,6 +9,9 @@ import java.util.Locale;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.net.ParseException;
+import android.text.format.DateUtils;
+
 public class Tweet implements Serializable {
 	private static final long serialVersionUID = 5758707162546258507L;
 	private String uid;

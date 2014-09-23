@@ -3,11 +3,13 @@ package com.codepath.apps.basictwitter.models;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import android.net.ParseException;
+import android.text.format.DateUtils;
 
 public class Tweet implements Serializable {
 	private static final long serialVersionUID = 5758707162546258507L;
@@ -22,11 +24,30 @@ public class Tweet implements Serializable {
 		try {
 			tweet.body = jsonObject.getString("text");
 			tweet.uid = jsonObject.getString("id");
-			tweet.createAt = jsonObject.getString("created_at");
+			String date = jsonObject.getString("created_at");
+			 tweet.createAt
+			 
+			 Date now = new Date();
+			 String str = DateUtils.getRelativeDateTimeString(
+
+			         this, // Suppose you are in an activity or other Context subclass
+
+			         now.getTime(), // The time to display
+
+			         DateTimeUtils.MINUTE_IN_MILLIS, // The resolution. This will display only 
+			                                         // minutes (no "3 seconds ago") 
+
+
+			         DateTimeUtils.WEEK_IN_MILLIS, // The maximum resolution at which the time will switch 
+			                          // to default date instead of spans. This will not 
+			                          // display "3 weeks ago" but a full date instead
+
+			         0); // Eventual flags
 			tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 		return tweet;
 	}
@@ -71,6 +92,23 @@ public class Tweet implements Serializable {
 		return getBody() + getUser().getScreenName();
 	}
 
-	
-
+//	public String getRelativeTimeAgo(String rawJsonDate)
+//			throws java.text.ParseException {
+//		String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+//		SimpleDateFormat sf = new SimpleDateFormat(twitterFormat,
+//				Locale.ENGLISH);
+//		sf.setLenient(true);
+//
+//		String relativeDate = "";
+//		try {
+//			long dateMillis = sf.parse(rawJsonDate).getTime();
+//			relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+//					System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS)
+//					.toString();
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return relativeDate;
+//	}
 }

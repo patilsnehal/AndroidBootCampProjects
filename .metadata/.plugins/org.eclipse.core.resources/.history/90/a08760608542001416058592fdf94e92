@@ -1,10 +1,8 @@
 package com.codepath.apps.basictwitter.models;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Collection;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,7 +13,7 @@ public class Tweet implements Serializable {
 	private String body;
 	private String createAt;
 	private User user;
-
+	
 	public static Tweet fromJson(JSONObject jsonObject) {
 		Tweet tweet = new Tweet();
 		// Extract value from JSON to populate tweet.
@@ -27,6 +25,7 @@ public class Tweet implements Serializable {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 		return tweet;
 	}
@@ -57,7 +56,7 @@ public class Tweet implements Serializable {
 				e.printStackTrace();
 				continue;
 			}
-
+			
 			Tweet tweet = Tweet.fromJson(tweetJson);
 			if (tweet != null) {
 				tweets.add(tweet);
@@ -65,12 +64,9 @@ public class Tweet implements Serializable {
 		}
 		return tweets;
 	}
-
+	
 	@Override
 	public String toString() {
 		return getBody() + getUser().getScreenName();
 	}
-
-	
-
 }
