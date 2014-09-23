@@ -1,36 +1,31 @@
 Grid Image App Demo
 
-This is an Android demo application for displaying images from internet in grid view. It allows user to enter the query and search it in the google/yahoo site and return the images in the grid view. It has a settings page which allows to filter images using size, type, color and allows to select website to search images. 
+This is an Android demo application for displaying tweets from users timeline in list view. It allows user to scroll through all the tweets. User can also compose tweet and post it.
 
 Time spent: 12-15 hours spent in total
 Completed user stories:
 
 Required:: 
 
-User can enter a search query that will display a grid of image results from the Google Image API.
+    User can sign in to Twitter using OAuth login
 
-User can click on "settings" which allows selection of advanced search options to filter results
+    User can view the tweets from their home timeline
 
-User can configure advanced search filters such as:
-Size (small, medium, large, extra-large)
-Color filter (black, blue, brown, gray, green, etc...)
-Type (faces, photo, clip art, line art)
-Site (espn.com)
+        1.User should be able to see the username, name, body and timestamp for each tweet
 
-Subsequent searches will have any filters applied to the search results
+        2.User should be displayed the relative timestamp for a tweet "8m", "7h"
 
-User can tap on any image in results to see the image full-screen
+        3.User can view more tweets as they scroll with infinite pagination
 
-User can scroll down “infinitely” to continue loading more image results (up to 8 pages)
+    User can compose a new tweet
 
+        1.User can click a “Compose” icon in the Action Bar on the top right
 
-Optional:: 
+        2.User can then enter a new tweet and post this to twitter
 
-Robust error handling, check if internet is available, handle error cases, network failures
-
-User can share an image to their friends or email it to themselves
+        3.User is taken back to home timeline with new tweet visible in timeline
 
 
 Walkthrough of all user stories:
-  ![Video Walkthrough](GridImage.gif)
+  ![Video Walkthrough](TwitterClient.gif)
 
