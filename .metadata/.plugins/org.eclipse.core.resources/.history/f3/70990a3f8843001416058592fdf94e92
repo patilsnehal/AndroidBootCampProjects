@@ -1,0 +1,26 @@
+package com.example.fragmentplay;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+
+public class HomeActivity extends FragmentActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+    }
+    
+    public void onFragmentOne(View v){
+//    	How fragment works
+//    	1.Create a fragment transcation 
+//    	2.Adjust the frame layout
+//    	3.Execute the fragment transaction
+    	
+    }
+    public void onFragmentTwo(View v){
+    	
+    }
+}
