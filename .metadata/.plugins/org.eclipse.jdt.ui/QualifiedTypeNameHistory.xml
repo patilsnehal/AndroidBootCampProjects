@@ -8,14 +8,12 @@
 <fullyQualifiedTypeName name="com.loopj.android.http.JsonHttpResponseHandler"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
-<fullyQualifiedTypeName name="android.R.layout"/>
 <fullyQualifiedTypeName name="android.widget.ListView"/>
 <fullyQualifiedTypeName name="android.widget.ImageView"/>
 <fullyQualifiedTypeName name="android.R.color"/>
 <fullyQualifiedTypeName name="com.nostra13.universalimageloader.core.ImageLoader"/>
 <fullyQualifiedTypeName name="com.codepath.apps.basictwitter.TweetArrayAdapter"/>
 <fullyQualifiedTypeName name="android.R.menu"/>
-<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.R.id"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -28,9 +26,14 @@
 <fullyQualifiedTypeName name="android.support.v4.app.FragmentManager"/>
 <fullyQualifiedTypeName name="android.app.FragmentTransaction"/>
 <fullyQualifiedTypeName name="android.support.v4.app.FragmentTransaction"/>
-<fullyQualifiedTypeName name="android.R"/>
 <fullyQualifiedTypeName name="android.R.drawable"/>
-<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.R"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.R.id"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.fragments.HomeTimelineFragment"/>
+<fullyQualifiedTypeName name="com.codepath.apps.basictwitter.fragments.MentionsTimelineFragments"/>
 </qualifiedTypeNameHistroy>

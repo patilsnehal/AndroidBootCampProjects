@@ -1,0 +1,5 @@
+package com.codepath.apps.basictwitter.fragments;
+
+public class UserTimelineFragment extends TweetsListFragment {
+
+}

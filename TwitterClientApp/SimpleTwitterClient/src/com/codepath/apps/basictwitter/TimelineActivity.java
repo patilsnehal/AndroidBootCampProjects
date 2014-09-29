@@ -54,15 +54,22 @@ public class TimelineActivity extends FragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.compose, menu);
+		getMenuInflater().inflate(R.menu.tweets, menu);
+
 		return true;
 	}
-	
-	public void onComposeClicked(MenuItem mi) {
+	public void onProfileClicked(MenuItem mi) {
 		// construct intent
-    	Intent i = new Intent(this, ComposeActivity.class);
+    	Intent i = new Intent(this, ProfileActivity.class);
     	// Pass arguments
     	//i.putExtra("settings", settings);
     	//Execute Intent StartACtivutyForResult
+    	startActivityForResult(i, 5);
+	}
+	
+	
+	public void onComposeClicked(MenuItem mi) {
+    	Intent i = new Intent(this, ComposeActivity.class);
     	startActivityForResult(i, 5);
 	}
 	
