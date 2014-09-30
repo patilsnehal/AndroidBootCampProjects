@@ -85,5 +85,7 @@ public class TimelineActivity extends FragmentActivity {
     	}
     }
     
-
+	public void profileImageClicked(){
+		System.out.println("profileImageClicked");
+	}
 }

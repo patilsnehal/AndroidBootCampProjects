@@ -43,6 +43,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 			v = inflator.inflate(R.layout.tweet_item, parent, false);
 			viewHolder.user_ID = tweet.getUser().getUid();
 			viewHolder.user_Name = tweet.getUser().getName();
+
 			v.setTag(viewHolder);
 
 		} else {

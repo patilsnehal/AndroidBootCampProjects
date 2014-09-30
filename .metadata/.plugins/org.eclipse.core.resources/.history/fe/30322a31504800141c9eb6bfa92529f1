@@ -41,8 +41,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		if (v == null) {
 			LayoutInflater inflator = LayoutInflater.from(getContext());
 			v = inflator.inflate(R.layout.tweet_item, parent, false);
-			viewHolder.user_ID = tweet.getUser().getUid();
-			viewHolder.user_Name = tweet.getUser().getName();
+			viewHolder.user_ID = tweet.getUser().getName();
 			v.setTag(viewHolder);
 
 		} else {
@@ -57,8 +56,6 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 			public void onClick(View v) {
 				ViewHolder vh = (ViewHolder) v.getTag();
 				System.out.println("image clilcked" + vh.user_ID);
-				System.out.println("image clilcked" + vh.user_Name);
-
 			}
 		});
 

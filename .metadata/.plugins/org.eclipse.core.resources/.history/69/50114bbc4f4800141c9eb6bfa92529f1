@@ -21,8 +21,6 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 	// View lookup cache
 	private static class ViewHolder {
 		String user_ID;
-		String user_Name;
-
 	}
 
 	public TweetArrayAdapter(Context context, List<Tweet> tweets) {
@@ -34,31 +32,28 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		// Get the data item for this position
 		Tweet tweet = getItem(position);
 		// Check if an existing view is being reused, otherwise inflate the view
-		View v = convertView;
-		ViewHolder viewHolder = new ViewHolder(); 
+		ViewHolder viewHolder; // view lookup cache stored in tag
 
 		// Check if an existing view is being reused, otherwise inflate the view
-		if (v == null) {
+		if (convertView == null) {
 			LayoutInflater inflator = LayoutInflater.from(getContext());
-			v = inflator.inflate(R.layout.tweet_item, parent, false);
-			viewHolder.user_ID = tweet.getUser().getUid();
-			viewHolder.user_Name = tweet.getUser().getName();
-			v.setTag(viewHolder);
+			convertView = inflator.inflate(R.layout.tweet_item, parent, false);
+			viewHolder.user_ID = tweet.getUser().getName();
+
+			convertView.setTag(viewHolder);
 
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
 		// Lookup view for data population
-		ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
+		ImageView ivProfileImage = (ImageView) v
+				.findViewById(R.id.ivProfileImage);
 
 		ivProfileImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ViewHolder vh = (ViewHolder) v.getTag();
-				System.out.println("image clilcked" + vh.user_ID);
-				System.out.println("image clilcked" + vh.user_Name);
-
+				System.out.println("image clilcked" + v.getTag());
 			}
 		});
 

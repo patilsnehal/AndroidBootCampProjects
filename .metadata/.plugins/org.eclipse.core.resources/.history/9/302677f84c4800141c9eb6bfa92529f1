@@ -13,58 +13,47 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
-	// View lookup cache
-	private static class ViewHolder {
-		String user_ID;
-		String user_Name;
-
-	}
-
 	public TweetArrayAdapter(Context context, List<Tweet> tweets) {
 		super(context, 0, tweets);
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+
 		// Get the data item for this position
 		Tweet tweet = getItem(position);
-		// Check if an existing view is being reused, otherwise inflate the view
-		View v = convertView;
-		ViewHolder viewHolder = new ViewHolder(); 
+		View v;
+		ViewHolder holder = new ViewHolder();
 
 		// Check if an existing view is being reused, otherwise inflate the view
-		if (v == null) {
+		if (convertView == null) {
 			LayoutInflater inflator = LayoutInflater.from(getContext());
 			v = inflator.inflate(R.layout.tweet_item, parent, false);
-			viewHolder.user_ID = tweet.getUser().getUid();
-			viewHolder.user_Name = tweet.getUser().getName();
-			v.setTag(viewHolder);
-
 		} else {
-			viewHolder = (ViewHolder) convertView.getTag();
+			v = convertView;
 		}
 
 		// Lookup view for data population
-		ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
-
+		ImageView ivProfileImage = (ImageView) v
+				.findViewById(R.id.ivProfileImage);
+		
 		ivProfileImage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				ViewHolder vh = (ViewHolder) v.getTag();
-				System.out.println("image clilcked" + vh.user_ID);
-				System.out.println("image clilcked" + vh.user_Name);
-
-			}
+		    @Override
+		    public void onClick(View v) {
+		    	System.out.println("image clilcked");
+		    }
 		});
-
+		
 		TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
 		TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
-
+		
 		// Populate the data into the template view using the data object
 		ivProfileImage.setImageResource(android.R.color.transparent);
 		TextView tvDate = (TextView) v.findViewById(R.id.tvDate);
@@ -75,7 +64,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 					ivProfileImage);
 
 		}
-
+		
 		tvUserName.setText(tweet.getUser().getScreenName());
 		tvBody.setText(tweet.getBody());
 		String date = getRelativeTimeAgo(tweet.getCreateAt());
@@ -84,7 +73,6 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		}
 		// Return the completed view to render on screen
 		return v;
-
 	}
 
 	// getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
