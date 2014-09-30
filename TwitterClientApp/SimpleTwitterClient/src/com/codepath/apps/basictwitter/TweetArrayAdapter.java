@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ParseException;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -13,18 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+ 
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
-	// View lookup cache
-	private static class ViewHolder {
-		TextView tvUserName;
-		TextView tvBody;
-		TextView tvDate;
-		ImageView ivProfileImage;
-	}
 
 	public TweetArrayAdapter(Context context, List<Tweet> tweets) {
 		super(context, 0, tweets);
@@ -35,58 +29,53 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		// Get the data item for this position
 		Tweet tweet = getItem(position);
 		// Check if an existing view is being reused, otherwise inflate the view
-		View v = convertView;
-	    ViewHolder viewHolder; // view lookup cache stored in tag
-
-		// Check if an existing view is being reused, otherwise inflate the view
-		if (v == null) {
-	        viewHolder = new ViewHolder();
-
+		if (convertView == null) {
 			LayoutInflater inflator = LayoutInflater.from(getContext());
-			v = inflator.inflate(R.layout.tweet_item, parent, false);
-			viewHolder.tvUserName = (TextView) v.findViewById(R.id.tvUserName);
-			viewHolder.tvBody = (TextView) v.findViewById(R.id.tvBody);
-			viewHolder.ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
-			viewHolder.tvDate = (TextView) v.findViewById(R.id.tvDate);
-			v.setTag(viewHolder);
-		} else {
-			viewHolder = (ViewHolder) convertView.getTag();
+			convertView = inflator.inflate(R.layout.tweet_item, parent, false);
 		}
-//		// Lookup view for data population
-//		ImageView ivProfileImage = (ImageView) v
-//				.findViewById(R.id.ivProfileImage);
-	
-//		TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
-//		TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
 
-		
-		viewHolder.ivProfileImage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				ViewHolder vh = (ViewHolder) v.getTag();
-				System.out.println("image clilcked" + vh.tvUserName);
-				// System.out.println("image clilcked" + vh.user_Name);
-			}
-		});
+		TextView tvUserName = (TextView) convertView
+				.findViewById(R.id.tvUserName);
+		TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
+		ImageView ivProfileImage = (ImageView) convertView
+				.findViewById(R.id.ivProfileImage);
+		TextView tvDate = (TextView) convertView.findViewById(R.id.tvDate);
+		tvUserName.setText(tweet.getUser().getScreenName());
+		tvBody.setText(tweet.getBody());
+		String date = getRelativeTimeAgo(tweet.getCreateAt());
+		if (date != null) {
+			tvDate.setText(date);
+		}
 
 		// Populate the data into the template view using the data object
-		viewHolder.ivProfileImage.setImageResource(android.R.color.transparent);
+		ivProfileImage.setImageResource(android.R.color.transparent);
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		if (tweet.getUser().getProfileImageUrl() != null) {
 			imageLoader.displayImage(tweet.getUser().getProfileImageUrl(),
-					viewHolder.ivProfileImage);
-
+					ivProfileImage);
 		}
+		ivProfileImage.setTag(tvUserName.getText().toString());
 
-		viewHolder.tvUserName.setText(tweet.getUser().getScreenName());
-		viewHolder.tvBody.setText(tweet.getBody());
-		String date = getRelativeTimeAgo(tweet.getCreateAt());
-		if (date != null) {
-			viewHolder.tvDate.setText(date);
-		}
+		ivProfileImage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Get Profile Activity
+				Intent i = new Intent(getContext(), ProfileActivity.class);
+
+				// Get ImageTag - which has user name
+				String userName = (String) v.getTag();
+				i.putExtra("userName", userName); 
+				
+				// Set the user name to lookup
+				TwitterApplication.getRestClient().setUserNameToLookup(userName);
+				
+				// Start the activity
+				getContext().startActivity(i);
+			}
+		});
+
 		// Return the completed view to render on screen
-		return v;
-
+		return convertView;
 	}
 
 	// getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
