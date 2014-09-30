@@ -36,12 +36,10 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		Tweet tweet = getItem(position);
 		// Check if an existing view is being reused, otherwise inflate the view
 		View v = convertView;
-	    ViewHolder viewHolder; // view lookup cache stored in tag
+		ViewHolder viewHolder = new ViewHolder();
 
 		// Check if an existing view is being reused, otherwise inflate the view
 		if (v == null) {
-	        viewHolder = new ViewHolder();
-
 			LayoutInflater inflator = LayoutInflater.from(getContext());
 			v = inflator.inflate(R.layout.tweet_item, parent, false);
 			viewHolder.tvUserName = (TextView) v.findViewById(R.id.tvUserName);

@@ -36,7 +36,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		Tweet tweet = getItem(position);
 		// Check if an existing view is being reused, otherwise inflate the view
 		View v = convertView;
-	    ViewHolder viewHolder; // view lookup cache stored in tag
+	       ViewHolder viewHolder; // view lookup cache stored in tag
 
 		// Check if an existing view is being reused, otherwise inflate the view
 		if (v == null) {

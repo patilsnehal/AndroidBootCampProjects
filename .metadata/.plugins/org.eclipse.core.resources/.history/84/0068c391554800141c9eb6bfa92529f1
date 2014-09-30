@@ -36,53 +36,55 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		Tweet tweet = getItem(position);
 		// Check if an existing view is being reused, otherwise inflate the view
 		View v = convertView;
-	    ViewHolder viewHolder; // view lookup cache stored in tag
+		ViewHolder viewHolder = new ViewHolder();
 
 		// Check if an existing view is being reused, otherwise inflate the view
 		if (v == null) {
-	        viewHolder = new ViewHolder();
-
 			LayoutInflater inflator = LayoutInflater.from(getContext());
 			v = inflator.inflate(R.layout.tweet_item, parent, false);
-			viewHolder.tvUserName = (TextView) v.findViewById(R.id.tvUserName);
-			viewHolder.tvBody = (TextView) v.findViewById(R.id.tvBody);
-			viewHolder.ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
-			viewHolder.tvDate = (TextView) v.findViewById(R.id.tvDate);
+			viewHolder.tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
+			viewHolder.tvBody = (TextView) convertView.findViewById(R.id.tvBody);
+			viewHolder.ivProfileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
+
 			v.setTag(viewHolder);
+
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
+//
 //		// Lookup view for data population
 //		ImageView ivProfileImage = (ImageView) v
 //				.findViewById(R.id.ivProfileImage);
-	
-//		TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
-//		TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
 
-		
-		viewHolder.ivProfileImage.setOnClickListener(new View.OnClickListener() {
+		ivProfileImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ViewHolder vh = (ViewHolder) v.getTag();
-				System.out.println("image clilcked" + vh.tvUserName);
+				System.out.println("image clilcked" + vh);
 				// System.out.println("image clilcked" + vh.user_Name);
+
 			}
 		});
+//
+//		TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
+//		TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
 
 		// Populate the data into the template view using the data object
-		viewHolder.ivProfileImage.setImageResource(android.R.color.transparent);
+		ivProfileImage.setImageResource(android.R.color.transparent);
+		TextView tvDate = (TextView) v.findViewById(R.id.tvDate);
+
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		if (tweet.getUser().getProfileImageUrl() != null) {
 			imageLoader.displayImage(tweet.getUser().getProfileImageUrl(),
-					viewHolder.ivProfileImage);
+					ivProfileImage);
 
 		}
 
-		viewHolder.tvUserName.setText(tweet.getUser().getScreenName());
-		viewHolder.tvBody.setText(tweet.getBody());
+		tvUserName.setText(tweet.getUser().getScreenName());
+		tvBody.setText(tweet.getBody());
 		String date = getRelativeTimeAgo(tweet.getCreateAt());
 		if (date != null) {
-			viewHolder.tvDate.setText(date);
+			tvDate.setText(date);
 		}
 		// Return the completed view to render on screen
 		return v;
