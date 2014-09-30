@@ -19,7 +19,7 @@ public class TimelineActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_timeline);
 		setupTabs();
-	}
+}
 
 	private void setupTabs() {
 		ActionBar actionBar = getActionBar();
@@ -67,7 +67,6 @@ public class TimelineActivity extends FragmentActivity {
     	startActivityForResult(i, 5);
 	}
 	
-	
 	public void onComposeClicked(MenuItem mi) {
     	Intent i = new Intent(this, ComposeActivity.class);
     	startActivityForResult(i, 5);
@@ -85,5 +84,15 @@ public class TimelineActivity extends FragmentActivity {
     	}
     }
     
+
+
+	public void customLoadMoreDataFromApi(int offset) {
+		// This method probably sends out a network request and appends new data
+		// items to your adapter.
+		// Use the offset value and add it as a parameter to your API request to
+		// retrieve paginated data.
+		// Deserialize API response and then construct new objects to append to
+		// the adapter
+	}
 
 }

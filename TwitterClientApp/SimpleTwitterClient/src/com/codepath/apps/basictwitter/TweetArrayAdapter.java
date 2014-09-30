@@ -55,7 +55,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 					ivProfileImage);
 		}
 		ivProfileImage.setTag(tvUserName.getText().toString());
-
+		
 		ivProfileImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

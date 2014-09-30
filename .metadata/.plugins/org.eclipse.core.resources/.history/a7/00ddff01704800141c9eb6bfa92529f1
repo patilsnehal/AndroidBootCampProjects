@@ -1,0 +1,131 @@
+package com.codepath.apps.basictwitter;
+
+import org.scribe.builder.api.Api;
+import org.scribe.builder.api.TwitterApi;
+
+import android.content.Context;
+
+import com.codepath.oauth.OAuthBaseClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+/*
+ * 
+ * This is the object responsible for communicating with a REST API. 
+ * Specify the constants below to change the API being communicated with.
+ * See a full list of supported API classes: 
+ *   https://github.com/fernandezpablo85/scribe-java/tree/master/src/main/java/org/scribe/builder/api
+ * Key and Secret are provided by the developer site for the given API i.e dev.twitter.com
+ * Add methods for each relevant endpoint in the API.
+ * 
+ * NOTE: You may want to rename this object based on the service i.e TwitterClient or FlickrClient
+ * 
+ */
+public class TwitterClient extends OAuthBaseClient {
+	public static final Class<? extends Api> REST_API_CLASS = TwitterApi.class; // Change
+																				// this
+	public static final String REST_URL = "https://api.twitter.com/1.1/"; // Change
+																			// this,
+																			// base
+																			// API
+																			// URL
+	public static final String REST_CONSUMER_KEY = "S5IgApyHJ2RZaQVozArPkkSDx"; // Change
+																				// this
+	public static final String REST_CONSUMER_SECRET = "aJFB9ME3289kiHLAtCvzAKWstBphvqwa6gdIP7ubPyGInpr3WC"; // Change
+																											// this
+	public static final String REST_CALLBACK_URL = "oauth://cpbasictweets"; // Change
+																			// this
+																			// (here
+																			// and
+																			// in
+																			// manifest)
+	public int pageOffset;
+	public static String userName = "";
+	public static long home_timeline_max_id = 0;
+	public static long mention_timeline_max_id = 0;
+
+	public static long getHome_timeline_max_id() {
+		return home_timeline_max_id;
+	}
+
+	public static void setHome_timeline_max_id(long home_timeline_max_id) {
+		TwitterClient.home_timeline_max_id = home_timeline_max_id;
+	}
+
+	public static long getMention_timeline_max_id() {
+		return mention_timeline_max_id;
+	}
+
+	public static void setMention_timeline_max_id(long mention_timeline_max_id) {
+		TwitterClient.mention_timeline_max_id = mention_timeline_max_id;
+	}
+
+	public static long getUser_timeline_max_id() {
+		return user_timeline_max_id;
+	}
+
+	public static void setUser_timeline_max_id(long user_timeline_max_id) {
+		TwitterClient.user_timeline_max_id = user_timeline_max_id;
+	}
+
+	public static long user_timeline_max_id = 0;
+
+	public TwitterClient(Context context) {
+		super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY,
+				REST_CONSUMER_SECRET, REST_CALLBACK_URL);
+	}
+
+	public void getHomeTimeline(AsyncHttpResponseHandler handler) {
+		String apiURL;
+		if (home_timeline_max_id == 0) {
+			apiURL = getApiUrl("statuses/home_timeline.json?count=20");
+		} else {
+			apiURL = getApiUrl("statuses/home_timeline.json?count=20&max_id="
+					+ (home_timeline_max_id - 1L));
+		}
+		System.out.println("apiURL:" + apiURL);
+		RequestParams param = new RequestParams();
+		param.put("since_id", "1");
+		client.get(apiURL, param, handler);
+	}
+
+	public void getMentionsTimeline(AsyncHttpResponseHandler handler) {
+		String apiURL = getApiUrl("statuses/mentions_timeline.json?count=20");
+		System.out.println("apiURL:" + apiURL);
+		client.get(apiURL, null, handler);
+	}
+
+	public void getMyinfo(AsyncHttpResponseHandler handler) {
+		String apiURL = getApiUrl("account/verify_credentials.json?");
+		System.out.println("apiURL:" + apiURL);
+		client.get(apiURL, null, handler);
+	}
+
+	public void setUserNameToLookup(String uName) {
+		if (uName != "") {
+			if (uName.charAt(0) == '@')
+				uName = uName.substring(1, uName.length());
+			userName = uName;
+		} else
+			userName = "";
+	}
+
+	public void getUserTimeline(AsyncHttpResponseHandler handler) {
+		String apiURL = getApiUrl("statuses/user_timeline.json?count=20");
+
+		if (userName != "") {
+			apiURL = apiURL + "&screen_name=" + userName;
+		}
+
+		System.out.println("apiURL:" + apiURL);
+		client.get(apiURL, null, handler);
+	}
+
+	public void postHomeTimeline(String status, AsyncHttpResponseHandler handler) {
+		String apiURL = getApiUrl("statuses/update.json?status=" + status);
+		System.out.println("apiURL:" + apiURL);
+		RequestParams param = new RequestParams();
+		client.post(apiURL, param, handler);
+	}
+}

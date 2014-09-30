@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Tweet implements Serializable {
@@ -15,7 +16,7 @@ public class Tweet implements Serializable {
 	private String body;
 	private String createAt;
 	private User user;
-
+ 
 	public static Tweet fromJson(JSONObject jsonObject) {
 		Tweet tweet = new Tweet();
 		// Extract value from JSON to populate tweet.
@@ -65,6 +66,18 @@ public class Tweet implements Serializable {
 		}
 		return tweets;
 	}
+	
+	public static long lowestTweetIdfromJsonArray(JSONArray arr) {
+		long uid = 0;
+		try {
+			JSONObject tweetJsonObj = arr.getJSONObject(arr.length() -1);
+			uid = tweetJsonObj.getLong("id");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} 
+		return uid;
+	}
+
 
 	@Override
 	public String toString() {

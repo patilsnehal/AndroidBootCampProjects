@@ -42,14 +42,51 @@ public class TwitterClient extends OAuthBaseClient {
 																			// manifest)
 	public int pageOffset;
 	public static String userName = "";
+	public static long home_timeline_max_id = 0;
+	public static long mention_timeline_max_id = 0;
+
+	public static long getHome_timeline_max_id() {
+		return home_timeline_max_id;
+	}
+
+	public static void setHome_timeline_max_id(long home_timeline_max_id) {
+		TwitterClient.home_timeline_max_id = home_timeline_max_id;
+	}
+
+	public static long getMention_timeline_max_id() {
+		return mention_timeline_max_id;
+	}
+
+	public static void setMention_timeline_max_id(long mention_timeline_max_id) {
+		TwitterClient.mention_timeline_max_id = mention_timeline_max_id;
+	}
+
+	public static long getUser_timeline_max_id() {
+		return user_timeline_max_id;
+	}
+
+	public static void setUser_timeline_max_id(long user_timeline_max_id) {
+		TwitterClient.user_timeline_max_id = user_timeline_max_id;
+	}
+
+	public static long user_timeline_max_id = 0;
 
 	public TwitterClient(Context context) {
 		super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY,
 				REST_CONSUMER_SECRET, REST_CALLBACK_URL);
 	}
 
+	
+	//Get Timelines 
+
 	public void getHomeTimeline(AsyncHttpResponseHandler handler) {
-		String apiURL = getApiUrl("statuses/home_timeline.json?count=20");
+		String apiURL;
+		if (home_timeline_max_id == 0) {
+			apiURL = getApiUrl("statuses/home_timeline.json?count=20");
+		} else {
+			apiURL = getApiUrl("statuses/home_timeline.json?count=20&max_id="
+					+ (home_timeline_max_id - 1L));
+		}
 		System.out.println("apiURL:" + apiURL);
 		RequestParams param = new RequestParams();
 		param.put("since_id", "1");
@@ -57,10 +94,35 @@ public class TwitterClient extends OAuthBaseClient {
 	}
 
 	public void getMentionsTimeline(AsyncHttpResponseHandler handler) {
-		String apiURL = getApiUrl("statuses/mentions_timeline.json?count=20");
+		String apiURL;
+		if (mention_timeline_max_id == 0) {
+			apiURL = getApiUrl("statuses/mentions_timeline.json?count=20");
+		} else {
+			apiURL = getApiUrl("statuses/mentions_timeline.json?count=20&max_id="
+					+ (home_timeline_max_id - 1L));
+		}
 		System.out.println("apiURL:" + apiURL);
 		client.get(apiURL, null, handler);
 	}
+	
+	public void getUserTimeline(AsyncHttpResponseHandler handler) {
+		String apiURL;
+		if (user_timeline_max_id == 0) {
+			apiURL = getApiUrl("statuses/user_timeline.json?count=20");
+		} else {
+			apiURL = getApiUrl("statuses/user_timeline.json?count=20&max_id="
+					+ (home_timeline_max_id - 1L));
+		}
+ 
+		if (userName != "") {
+			apiURL = apiURL + "&screen_name=" + userName;
+		}
+
+		System.out.println("apiURL:" + apiURL);
+		client.get(apiURL, null, handler);
+	}
+	
+	//Get USERINFO 
 
 	public void getMyinfo(AsyncHttpResponseHandler handler) {
 		String apiURL = getApiUrl("account/verify_credentials.json?");
@@ -77,17 +139,7 @@ public class TwitterClient extends OAuthBaseClient {
 			userName = "";
 	}
 
-	public void getUserTimeline(AsyncHttpResponseHandler handler) {
-		String apiURL = getApiUrl("statuses/user_timeline.json?count=20");
-
-		if (userName != "") {
-			apiURL = apiURL + "&screen_name=" + userName;
-		}
-
-		System.out.println("apiURL:" + apiURL);
-		client.get(apiURL, null, handler);
-	}
-
+	//POST To home Timeline
 	public void postHomeTimeline(String status, AsyncHttpResponseHandler handler) {
 		String apiURL = getApiUrl("statuses/update.json?status=" + status);
 		System.out.println("apiURL:" + apiURL);

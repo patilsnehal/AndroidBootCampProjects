@@ -27,6 +27,8 @@ public class MentionsTimelineFragments extends TweetsListFragment {
 			@Override
 			public void onSuccess(JSONArray json) {
 				addAll(Tweet.fromJSONArray(json));
+				notifyDataSetChanged();
+				TwitterClient.setMention_timeline_max_id(Tweet.lowestTweetIdfromJsonArray(json));
 			}
 
 			@Override
@@ -35,6 +37,10 @@ public class MentionsTimelineFragments extends TweetsListFragment {
 				Log.d("debug", s.toString());
 			}
 		});
+	}
+	
+	public void customLoadMoreDataFromApi(int offset) {
+		populateTimeline();
 	}
 }
 

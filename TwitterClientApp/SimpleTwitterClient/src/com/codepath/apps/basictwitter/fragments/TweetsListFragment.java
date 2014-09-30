@@ -18,32 +18,55 @@ public class TweetsListFragment extends Fragment {
 	public ArrayList<Tweet> tweets;
 	public TweetArrayAdapter aTweets;
 	public ListView lvTweets;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
 		tweets = new ArrayList<Tweet>();
-		aTweets = new TweetArrayAdapter(getActivity(), tweets);		
+		aTweets = new TweetArrayAdapter(getActivity(), tweets);
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		// Inflate the layout
-		View v = inflater.inflate(R.layout.fragment_tweet_list, container, false);
+		View v = inflater.inflate(R.layout.fragment_tweet_list, container,
+				false);
 		lvTweets = (ListView) v.findViewById(R.id.lvTweets);
 		lvTweets.setAdapter(aTweets);
 
-		// Assign our view references
-		// 
+		// Attach the listener to the AdapterView onCreate
+		lvTweets.setOnScrollListener(new EndlessScrollListener() {
+			@Override
+			public void onLoadMore(int page, int totalItemsCount) {
+				// Triggered only when new data needs to be appended to the list
+				// Add whatever code is needed to append new items to your
+				// AdapterView
+				customLoadMoreDataFromApi(page);
+			}
+		});
+
 		// return the layout view
 		return v;
 	}
-	
-	public void addAll(ArrayList<Tweet> tweets){
+
+	public void addAll(ArrayList<Tweet> tweets) {
 		aTweets.addAll(tweets);
+	}
+
+	public void notifyDataSetChanged() {
+		aTweets.notifyDataSetChanged();
+	}
+
+	public void insert(Tweet newerTweet, int pos) {
+		aTweets.insert(newerTweet, pos);
+	}
+
+	public void customLoadMoreDataFromApi(int offset) {
+		// TODO Auto-generated method stub
+
 	}
 }
