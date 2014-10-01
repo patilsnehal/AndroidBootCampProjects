@@ -12,18 +12,25 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ProfileActivity extends FragmentActivity {
-
+	TwitterClient 	client;
+	String userScreenName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
+		userScreenName = "";
+		userScreenName = getIntent().getStringExtra("UserScreenName");
+		client = TwitterApplication.getRestClient();
 		loadProfileInfo();
+
 	}
 
 	private void loadProfileInfo() {
-		TwitterApplication.getRestClient().getMyinfo(new JsonHttpResponseHandler(){
+//		client.setUserNameToLookup(userScreenName);
+		client.getMyinfo(new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(int arg0, JSONObject json) {
+				System.out.println("USERJSON:"+ json);
 				User u = User.fromJson(json);
 				getActionBar().setTitle("@" + u.getScreenName());
 				populateUserHeader(u);
@@ -45,4 +52,5 @@ public class ProfileActivity extends FragmentActivity {
 		ImageLoader.getInstance().displayImage(u.getProfileImageUrl(), ivProfileImage);
 		
 	}
+
 }

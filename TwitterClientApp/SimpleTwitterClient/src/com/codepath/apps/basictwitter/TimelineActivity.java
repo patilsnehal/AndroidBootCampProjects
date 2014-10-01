@@ -62,7 +62,7 @@ public class TimelineActivity extends FragmentActivity {
 		// construct intent
     	Intent i = new Intent(this, ProfileActivity.class);
     	// Pass arguments
-    	//i.putExtra("settings", settings);
+		i.putExtra("UserScreenName", ""); // Self Profile
     	//Execute Intent StartACtivutyForResult
     	startActivityForResult(i, 5);
 	}
