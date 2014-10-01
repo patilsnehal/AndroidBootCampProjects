@@ -82,7 +82,10 @@ public class ProfileActivity extends FragmentActivity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
+				}
+				@Override
+				public void onFailure(Throwable arg0, String arg1) {
+					System.out.println("USERJSON: " +  arg1);
 				}
 			});
 		} else {
@@ -121,6 +124,9 @@ public class ProfileActivity extends FragmentActivity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				}
+				public void onFailure(Throwable arg0, String arg1) {
+					System.out.println("USERJSON: " +  arg1);
 				}
 			});
 		}
