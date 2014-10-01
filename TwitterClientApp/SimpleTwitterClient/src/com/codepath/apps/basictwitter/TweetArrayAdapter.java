@@ -59,12 +59,12 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		ivProfileImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Get Profile Activity
+				// Get Profile Activitys
 				Intent i = new Intent(getContext(), ProfileActivity.class);
 
 				// Get ImageTag - which has user name
 				String userName = (String) v.getTag();
-				i.putExtra("userName", userName); 
+				i.putExtra("userScreenName", userName); 
 				
 				// Set the user name to lookup
 				TwitterApplication.getRestClient().setUserNameToLookup(userName);

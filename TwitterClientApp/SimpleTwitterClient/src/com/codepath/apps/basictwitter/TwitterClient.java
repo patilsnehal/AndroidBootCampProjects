@@ -129,6 +129,7 @@ public class TwitterClient extends OAuthBaseClient {
 		System.out.println("apiURL:" + apiURL);
 		client.get(apiURL, null, handler);
 	}
+	
 
 	public void setUserNameToLookup(String uName) {
 		if (uName != "") {
