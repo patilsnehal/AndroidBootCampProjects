@@ -40,12 +40,12 @@ public class ProfileActivity extends FragmentActivity {
 
 	public void loadProfileInfo() {
 		TwitterClient client = TwitterApplication.getRestClient();
-
+		client.setUserNameToLookup(userScreenName);
 		tvName = (TextView) findViewById(R.id.tvName);
 		tvTagline = (TextView) findViewById(R.id.tvTagline);
 		tvFollowers = (TextView) findViewById(R.id.tvFollowers);
 		tvFollowing = (TextView) findViewById(R.id.tvFollowing);
-		ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+		ivProfileImage = (ImageView) findViewById(R.id.ivImageView);
 
 		if (userScreenName.equalsIgnoreCase("") == true) {
 			client.getMyinfo(new JsonHttpResponseHandler() {
@@ -57,7 +57,7 @@ public class ProfileActivity extends FragmentActivity {
 					try {
 						userName = json.getString("name");
 						String userScreenName = json.getString("screen_name");
-						String userTagLine = json.getString("description");
+//						String userTagLine = json.getString("description");
 						String uProfileIgUrl = json
 								.getString("profile_image_url_https");
 						int iFollower = json.getInt("followers_count");
@@ -68,8 +68,8 @@ public class ProfileActivity extends FragmentActivity {
 							getActionBar().setTitle(userScreenName);
 						else
 							getActionBar().setTitle(userName);
-						if (userTagLine != null)
-							tvTagline.setText(userTagLine);
+//						if (userTagLine != null)
+//							tvTagline.setText(userTagLine);
 
 						if (uProfileIgUrl != null)
 							userProfileImageUrl = uProfileIgUrl;
@@ -89,17 +89,30 @@ public class ProfileActivity extends FragmentActivity {
 				}
 			});
 		} else {
-			client.getUserTimeline(new JsonHttpResponseHandler() {
+			client.getUserLookup(new JsonHttpResponseHandler() {
 				@Override
-				public void onSuccess(int arg0, JSONObject json) {
+//				public void onSuccess(int arg0, JSONArray arg1) {
+				public void onSuccess(JSONArray arg1) {
+//					// TODO Auto-generated method stub
+//					super.onSuccess(arg0);
+//				}
+//				@Override
+//				public void onSuccess(int arg0, JSONObject json) {
 					String userProfileImageUrl = "";
-					System.out.println("USERJSON: " + json.toString());
-
-					String userName;
+					JSONObject json;
 					try {
+						json = arg1.getJSONObject(0);
+//					} catch (JSONException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+					System.out.println("USERJSON: " + json.toString());
+//
+					String userName;
+//					try {
 						userName = json.getString("name");
 						String userScreenName = json.getString("screen_name");
-						String userTagLine = json.getString("description");
+//						String userTagLine = json.getString("description");
 						String uProfileIgUrl = json
 								.getString("profile_image_url_https");
 						int iFollower = json.getInt("followers_count");
@@ -110,8 +123,8 @@ public class ProfileActivity extends FragmentActivity {
 							getActionBar().setTitle(userScreenName);
 						else
 							getActionBar().setTitle(userName);
-						if (userTagLine != null)
-							tvTagline.setText(userTagLine);
+//						if (userTagLine != null)
+//							tvTagline.setText(userTagLine);
 
 						if (uProfileIgUrl != null)
 							userProfileImageUrl = uProfileIgUrl;
@@ -124,6 +137,42 @@ public class ProfileActivity extends FragmentActivity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				}
+				
+				@Override
+				public void onSuccess(int arg0, JSONObject arg1) {
+					// TODO Auto-generated method stub
+					super.onSuccess(arg0, arg1);
+				}
+				@Override
+				public void onSuccess(int arg0, String arg1) {
+					// TODO Auto-generated method stub
+					super.onSuccess(arg0, arg1);
+				}
+				@Override
+				public void onSuccess(String arg0) {
+					// TODO Auto-generated method stub
+					super.onSuccess(arg0);
+				}
+				@Override
+				public void onFailure(Throwable arg0, JSONArray arg1) {
+					// TODO Auto-generated method stub
+					super.onFailure(arg0, arg1);
+				}
+				@Override
+				public void onFailure(Throwable arg0, JSONObject arg1) {
+					// TODO Auto-generated method stub
+					super.onFailure(arg0, arg1);
+				}
+				@Override
+				public void onFailure(Throwable arg1) {
+					// TODO Auto-generated method stub
+					System.out.println("USERJSON: " +  arg1);
+				}
+				@Override
+				public void onFinish() {
+					// TODO Auto-generated method stub
+					super.onFinish();
 				}
 				public void onFailure(Throwable arg0, String arg1) {
 					System.out.println("USERJSON: " +  arg1);

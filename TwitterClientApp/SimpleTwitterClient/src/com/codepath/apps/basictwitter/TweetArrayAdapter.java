@@ -54,7 +54,8 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 			imageLoader.displayImage(tweet.getUser().getProfileImageUrl(),
 					ivProfileImage);
 		}
-		ivProfileImage.setTag(tvUserName.getText().toString());
+//		ivProfileImage.setTag(tvUserName.getText().toString());
+		ivProfileImage.setTag(tweet.getUser().getScreenName().toString());
 		
 		ivProfileImage.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -64,7 +65,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 
 				// Get ImageTag - which has user name
 				String userName = (String) v.getTag();
-				i.putExtra("userScreenName", userName); 
+				i.putExtra("UserScreenName", userName); 
 				
 				// Set the user name to lookup
 				TwitterApplication.getRestClient().setUserNameToLookup(userName);

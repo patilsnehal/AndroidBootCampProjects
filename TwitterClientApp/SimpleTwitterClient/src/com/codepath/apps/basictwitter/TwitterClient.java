@@ -76,8 +76,7 @@ public class TwitterClient extends OAuthBaseClient {
 				REST_CONSUMER_SECRET, REST_CALLBACK_URL);
 	}
 
-	
-	//Get Timelines 
+	// Get Timelines
 
 	public void getHomeTimeline(AsyncHttpResponseHandler handler) {
 		String apiURL;
@@ -104,7 +103,7 @@ public class TwitterClient extends OAuthBaseClient {
 		System.out.println("apiURL:" + apiURL);
 		client.get(apiURL, null, handler);
 	}
-	
+
 	public void getUserTimeline(AsyncHttpResponseHandler handler) {
 		String apiURL;
 		if (user_timeline_max_id == 0) {
@@ -113,7 +112,7 @@ public class TwitterClient extends OAuthBaseClient {
 			apiURL = getApiUrl("statuses/user_timeline.json?count=20&max_id="
 					+ (home_timeline_max_id - 1L));
 		}
- 
+
 		if (userName != "") {
 			apiURL = apiURL + "&screen_name=" + userName;
 		}
@@ -121,15 +120,24 @@ public class TwitterClient extends OAuthBaseClient {
 		System.out.println("apiURL:" + apiURL);
 		client.get(apiURL, null, handler);
 	}
-	
-	//Get USERINFO 
+
+	// Get USERINFO
 
 	public void getMyinfo(AsyncHttpResponseHandler handler) {
-		String apiURL = getApiUrl("account/verify_credentials.json?");
+		String apiURL = getApiUrl("account/verify_credentials.json");
 		System.out.println("apiURL:" + apiURL);
 		client.get(apiURL, null, handler);
 	}
-	
+
+	public void getUserLookup(AsyncHttpResponseHandler handler) {
+		String apiURL;
+		if (userName == "") {
+			apiURL = getApiUrl("users/lookup.json");
+		} else {
+			apiURL = getApiUrl("users/lookup.json?screen_name=" + userName);
+		}
+		client.get(apiURL, null, handler);
+	}
 
 	public void setUserNameToLookup(String uName) {
 		if (uName != "") {
@@ -140,7 +148,7 @@ public class TwitterClient extends OAuthBaseClient {
 			userName = "";
 	}
 
-	//POST To home Timeline
+	// POST To home Timeline
 	public void postHomeTimeline(String status, AsyncHttpResponseHandler handler) {
 		String apiURL = getApiUrl("statuses/update.json?status=" + status);
 		System.out.println("apiURL:" + apiURL);
