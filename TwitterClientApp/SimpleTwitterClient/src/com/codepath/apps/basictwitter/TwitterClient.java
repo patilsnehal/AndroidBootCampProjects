@@ -117,7 +117,7 @@ public class TwitterClient extends OAuthBaseClient {
 			apiURL = apiURL + "&screen_name=" + userName;
 		}
 
-		System.out.println("apiURL:" + apiURL);
+		System.out.println("userapiURL:" + apiURL);
 		client.get(apiURL, null, handler);
 	}
 
